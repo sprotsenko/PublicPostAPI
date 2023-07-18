@@ -1,6 +1,6 @@
 # Welcome!
 
-## Welcome to MyAPI
+## Welcome to Address Search API
 
 Welcome to Address Data Search API! Here you'll find all the documentation you need to get up and running with the service for getting the postcode and post office data.
 
