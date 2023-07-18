@@ -26,29 +26,19 @@ For the URI address classifier (please see the Address Classifier documentation)
 
 https://www.ukrposhta.ua/address-classifier-ws/
 
-**Searching a region by its name**
 
 
 
-{% swagger method="get" path="" baseUrl="/get_regions_by_region_ua?region_name=Київська" summary="" %}
+
+{% swagger method="get" path="" baseUrl="/get_regions_by_region_ua?region_name={Name of Region}" summary="Searching a region by its name" %}
 {% swagger-description %}
 
 {% endswagger-description %}
 
 {% swagger-response status="200: OK" description="" %}
-'''
-
-{ "Entries":{ "Entry":\[ { "REGION\_ID": "270", "REGION\_UA": "Київська", "REGION\_EN": "Kyivska", "REGION\_KATOTTG": "32000000000030281", "REGION\_KOATUU": "3200000000", "REGION\_RU": null } ] } }
-
-''''
+`{ "Entries":{ "Entry":[ { "REGION_ID":"270", "REGION_UA":"Київська", "REGION_EN":"Kyivska", "REGION_KATOTTG":"32000000000030281", "REGION_KOATUU":"3200000000", "REGION_RU":null } ] } }`
 {% endswagger-response %}
 {% endswagger %}
-
-| **GET** Request |
-| --------------- |
-|                 |
-| Response        |
-| {               |
 
 The response will provide us with the Region ID REGION\_ID.
 
