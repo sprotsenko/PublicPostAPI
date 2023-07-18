@@ -30,14 +30,8 @@ https://www.ukrposhta.ua/address-classifier-ws/
 
 
 
-{% swagger method="get" path="" baseUrl="/get_regions_by_region_ua?region_name={Name of Region}" summary="Searching a region by its name" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-response status="200: OK" description="" %}
-`{ "Entries":{ "Entry":[ { "REGION_ID":"270", "REGION_UA":"Київська", "REGION_EN":"Kyivska", "REGION_KATOTTG":"32000000000030281", "REGION_KOATUU":"3200000000", "REGION_RU":null } ] } }`
-{% endswagger-response %}
+{% swagger src=".gitbook/assets/AddressSearch.yaml" path="/get_regions_by_region_ua" method="get" %}
+[AddressSearch.yaml](.gitbook/assets/AddressSearch.yaml)
 {% endswagger %}
 
 The response will provide us with the Region ID REGION\_ID.
@@ -50,15 +44,15 @@ Let’s find information about the district (rayon).
 
 **Searching district by region ID and the district name**
 
-| **GET** Request |
-| --------------- |
-|                 |
-| Response        |
-| {               |
-
 The response will provide us with the District ID DISTRICT\_ID.
 
 With the next request we will get information about the locality.
+
+
+
+{% swagger src=".gitbook/assets/AddressSearch.yaml" path="/get_districts_by_region_id_and_district_ua" method="get" %}
+[AddressSearch.yaml](.gitbook/assets/AddressSearch.yaml)
+{% endswagger %}
 
 ### **Step 3. Locality search** <a href="#step-3-locality-search" id="step-3-locality-search"></a>
 
@@ -66,15 +60,15 @@ Let’s find information about the locality (city).
 
 **Searching locality by district ID and the locality name**
 
-| **GET** Request |
-| --------------- |
-|                 |
-| Response        |
-| {               |
-
 The response will provide us with the Locality ID CITY\_ID, CITY\_KOATUU or CITY\_KATOTTG.
 
 With the next request we will get information about the post office.
+
+
+
+{% swagger src=".gitbook/assets/AddressSearch.yaml" path="/get_city_by_region_id_and_district_id_and_city_ua" method="get" %}
+[AddressSearch.yaml](.gitbook/assets/AddressSearch.yaml)
+{% endswagger %}
 
 ### **Step 4. Post office search** <a href="#step-4-post-office-search" id="step-4-post-office-search"></a>
 
@@ -82,13 +76,13 @@ Let’s find information about the post office in the locality (city).
 
 **Searching post offices by city ID**
 
-| **GET** Request |
-| --------------- |
-|                 |
-| Response        |
-| {               |
-
 In response for each of the post offices we will receive the field POSTCODE– zip code, which must be specified during the address creation.
+
+
+
+{% swagger src=".gitbook/assets/AddressSearch.yaml" path="/get_postoffices_by_postcode_cityid_cityvpzid" method="get" %}
+[AddressSearch.yaml](.gitbook/assets/AddressSearch.yaml)
+{% endswagger %}
 
 **Searching post offices by locality KOATUU code**
 

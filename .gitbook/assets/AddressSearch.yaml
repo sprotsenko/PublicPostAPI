@@ -1,0 +1,346 @@
+openapi: 3.0.3
+info:
+  title: UkrPoshta Address Classifier API
+  description: API for getting regions, districts, cities, and post offices
+  version: 1.0.0
+servers:
+  - url: https://www.ukrposhta.ua/address-classifier-ws/
+paths:
+  /get_regions_by_region_ua:
+    get:
+      summary: Get regions by region name
+      parameters:
+        - name: region_name
+          in: query
+          description: The name of the region
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionResponse'
+      security:
+        - bearerAuth: []
+
+  /get_districts_by_region_id_and_district_ua:
+    get:
+      summary: Get districts by region ID and district name
+      parameters:
+        - name: region_id
+          in: query
+          description: The ID of the region
+          required: true
+          schema:
+            type: string
+        - name: district_ua
+          in: query
+          description: The name of the district
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DistrictResponse'
+      security:
+        - bearerAuth: []
+
+  /get_city_by_region_id_and_district_id_and_city_ua:
+    get:
+      summary: Get city by region ID, district ID, and city name
+      parameters:
+        - name: district_id
+          in: query
+          description: The ID of the district
+          required: true
+          schema:
+            type: string
+        - name: city_ua
+          in: query
+          description: The name of the city
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityResponse'
+      security:
+        - bearerAuth: []
+
+  /get_postoffices_by_postcode_cityid_cityvpzid:
+    get:
+      summary: Get post offices by postcode, city ID, and city VPZ ID
+      parameters:
+        - name: city_id
+          in: query
+          description: The ID of the city
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostOfficeResponse'
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    RegionResponse:
+      type: object
+      properties:
+        REGION_ID:
+          type: string
+          example: "270"
+        REGION_UA:
+          type: string
+          example: "Київська"
+        REGION_EN:
+          type: string
+          example: "Kyivska"
+        REGION_KATOTTG:
+          type: string
+          example: "32000000000030281"
+        REGION_KOATUU:
+          type: string
+          example: "3200000000"
+        REGION_RU:
+          type: null
+          example: null
+
+    DistrictResponse:
+      type: object
+      properties:
+        REGION_ID:
+          type: string
+          example: "270"
+        DISTRICT_KOATUU:
+          type: string
+          example: "3221200000"
+        REGION_KATOTTG:
+          type: string
+          example: "32000000000030281"
+        DISTRICT_ID:
+          type: string
+          example: "339"
+        REGION_RU:
+          type: null
+          example: null
+        DISTRICT_KATOTTG:
+          type: string
+          example: "32060000000012455"
+        DISTRICT_EN:
+          type: string
+          example: "BROVARSKYI"
+        REGION_UA:
+          type: string
+          example: "Київська"
+        REGION_EN:
+          type: string
+          example: "Kyivska"
+        DISTRICT_UA:
+          type: string
+          example: "Броварський"
+        REGION_KOATUU:
+          type: string
+          example: "3200000000"
+        DISTRICT_RU:
+          type: string
+          example: "0"
+        NEW_DISTRICT_UA:
+          type: null
+          example: null
+
+    CityResponse:
+      type: object
+      properties:
+        REGION_ID:
+          type: string
+          example: "270"
+        POPULATION:
+          type: string
+          example: "106346"
+        DISTRICT_ID:
+          type: string
+          example: "339"
+        LONGITUDE:
+          type: string
+          example: "30.806183"
+        CITY_KATOTTG:
+          type: string
+          example: "32060050010081797"
+        CITY_RU:
+          type: string
+          example: "0"
+        DISTRICT_EN:
+          type: string
+          example: "BROVARSKYI"
+        REGION_EN:
+          type: string
+          example: "Kyivska"
+        OLDCITY_RU:
+          type: null
+          example: null
+        SHORTCITYTYPE_EN:
+          type: null
+          example: null
+        CITYTYPE_UA:
+          type: string
+          example: "місто"
+        OLDCITY_UA:
+          type: null
+          example: null
+        NEW_DISTRICT_UA:
+          type: null
+          example: null
+        CITY_EN:
+          type: string
+          example: "Brovary"
+        CITYTYPE_RU:
+          type: null
+          example: null
+        CITY_KOATUU:
+          type: string
+          example: "3210600000"
+        REGION_RU:
+          type: null
+          example: null
+        NAME_UA:
+          type: string
+          example: "Активний запис"
+        REGION_UA:
+          type: string
+          example: "Київська"
+        OLDCITY_EN:
+          type: null
+          example: null
+        SHORTCITYTYPE_RU:
+          type: null
+          example: null
+        CITY_ID:
+          type: string
+          example: "10952"
+        DISTRICT_UA:
+          type: string
+          example: "Броварський"
+        CITYTYPE_EN:
+          type: string
+          example: "City"
+        SHORTCITYTYPE_UA:
+          type: string
+          example: "м."
+        LATTITUDE:
+          type: string
+          example: "50.510009"
+        CITY_UA:
+          type: string
+          example: "Бровари"
+
+    PostOfficeResponse:
+      type: object
+      properties:
+        LOCK_EN:
+          type: string
+          example: "Active record"
+        CITY_UA_VPZ:
+          type: string
+          example: "Бровари"
+        POSTTERMINAL:
+          type: string
+          example: "0"
+        POSTOFFICE_UA:
+          type: string
+          example: "07400 Бровари"
+        POSTCODE:
+          type: string
+          example: "07400"
+        ISAUTOMATED:
+          type: string
+          example: "1"
+        PHONE:
+          type: string
+          example: "+380-800-300-545"
+        LONGITUDE:
+          type: string
+          example: "30.79083"
+        CITY_KATOTTG:
+          type: string
+          example: "32060050010081797"
+        STREET_UA_VPZ:
+          type: string
+          example: "вул. Героїв України, 20"
+        IS_SECURITY:
+          type: string
+          example: "0"
+        POSTOFFICE_ID:
+          type: string
+          example: "2738"
+        POSTOFFICE_UA_DETAILS:
+          type: null
+          example: null
+        LOCK_UA:
+          type: string
+          example: "Активний запис"
+        CITY_UA_TYPE:
+          type: string
+          example: "м."
+        CITY_VPZ_KATOTTG:
+          type: string
+          example: "32060050010081797"
+        LOCK_CODE:
+          type: string
+          example: "0"
+        CITY_VPZ_ID:
+          type: string
+          example: "10952"
+        CITY_KOATUU:
+          type: string
+          example: "3210600000"
+        STREET_ID_VPZ:
+          type: string
+          example: "201050"
+        LOCK_RU:
+          type: string
+          example: "Активная запись"
+        CITY_VPZ_KOATUU:
+          type: string
+          example: "3210600000"
+        TYPE_ACRONYM:
+          type: string
+          example: "МВПЗ"
+        TYPE_LONG:
+          type: string
+          example: "Міське відділення поштового зв'язку"
+        TYPE_ID:
+          type: string
+          example: "48"
+        CITY_ID:
+          type: string
+          example: "10952"
+        HOUSENUMBER:
+          type: string
+          example: "20"
+        LATTITUDE:
+          type: string
+          example: "50.51027"
+        CITY_UA:
+          type: string
+          example: "Бровари"
