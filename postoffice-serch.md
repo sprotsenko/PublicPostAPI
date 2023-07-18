@@ -28,6 +28,22 @@ https://www.ukrposhta.ua/address-classifier-ws/
 
 **Searching a region by its name**
 
+
+
+{% swagger method="get" path="" baseUrl="/get_regions_by_region_ua?region_name=Київська" summary="" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+
+{% swagger-response status="200: OK" description="" %}
+'''
+
+{ "Entries":{ "Entry":\[ { "REGION\_ID": "270", "REGION\_UA": "Київська", "REGION\_EN": "Kyivska", "REGION\_KATOTTG": "32000000000030281", "REGION\_KOATUU": "3200000000", "REGION\_RU": null } ] } }
+
+''''
+{% endswagger-response %}
+{% endswagger %}
+
 | **GET** Request |
 | --------------- |
 |                 |
