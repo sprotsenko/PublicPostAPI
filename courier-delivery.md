@@ -2,6 +2,8 @@
 description: >-
   Here it is described the workflow to get the postcode in case when the
   shipment must be delivered by courier to your home.
+cover: .gitbook/assets/deokupovani-900х450.png
+coverY: 0
 ---
 
 # Courier delivery
@@ -20,7 +22,7 @@ Region -> District -> City -> Street -> House
 
 ### **Step 1. Region Search** <a href="#step-1-region-search-0" id="step-1-region-search-0"></a>
 
-Let’s find information about the region (oblast).
+Let’s find information about the region.
 
 **Searching a region by its name**
 
@@ -34,7 +36,7 @@ With the next request, we will get information about the district.
 
 ### **Step 2. District Search** <a href="#step-2-district-search-0" id="step-2-district-search-0"></a>
 
-Let’s find information about the district (rayon).
+Let’s find information about the district.
 
 **Searching district by region ID and the district name**
 
@@ -48,7 +50,7 @@ With the next request, we will get information about the locality.
 
 ### **Step 3. Locality search** <a href="#step-3-locality-search-0" id="step-3-locality-search-0"></a>
 
-Let’s find information about the locality (city).
+Let’s find information about the locality.
 
 **Searching locality by district ID and the locality name**
 
@@ -86,6 +88,6 @@ Let’s find information about the house and the zip code which serves the house
 
 The response will provide us with the POSTCODE.
 
-Thus, the house at the address 251 Kyivska str., Brovary, Kyiv region is served by the **postcode** **07405.**
+Thus, the house at the address 251 Kyivska street, Brovary, Kyiv region is served by the **postcode** **07405.**
 
 **This postcode must be specified in the postcode field when creating the recipient's address.**

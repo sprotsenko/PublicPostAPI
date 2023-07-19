@@ -1,3 +1,8 @@
+---
+cover: .gitbook/assets/deokupovani-900х450.png
+coverY: 0
+---
+
 # Localities with the identical names
 
 Within one district there may exist several localities with the same name. For example, the village Lisove in Lviv region. Let’s get information about the locality by region ID (273 - Lviv region) and the locality name “Lisove”.

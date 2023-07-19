@@ -2,6 +2,8 @@
 description: >-
   Here it is described the workflow to get the postcode in case when the
   shipment must be delivered to the postoffice.
+cover: .gitbook/assets/deokupovani-900х450.png
+coverY: 0
 ---
 
 # Postoffice delivery
@@ -24,9 +26,9 @@ The list of all post offices in the locality can be obtained in three ways:
 
 ### **Step 1. Region Search** <a href="#step-1-region-search" id="step-1-region-search"></a>
 
-Let’s find information about the region (oblast).
+Let’s find information about the region.
 
-For the URI address classifier (please see the Address Classifier documentation):
+Use the following service URI to get the Address Classifier data:
 
 https://www.ukrposhta.ua/address-classifier-ws/
 
@@ -40,7 +42,7 @@ With the next request, we will get information about the district.
 
 ### **Step 2. District Search** <a href="#step-2-district-search" id="step-2-district-search"></a>
 
-Let’s find information about the district (rayon).
+Let’s find information about the district.
 
 **Searching district by region ID and the district name**
 
@@ -54,7 +56,7 @@ With the next request, we will get information about the locality.
 
 ### **Step 3. Locality search** <a href="#step-3-locality-search" id="step-3-locality-search"></a>
 
-Let’s find information about the locality (city).
+Let’s find information about the locality.
 
 **Searching locality by district ID and the locality name**
 
@@ -68,7 +70,7 @@ With the next request, we will get information about the post office.
 
 ### **Step 4. Post office search** <a href="#step-4-post-office-search" id="step-4-post-office-search"></a>
 
-Let’s find information about the post office in the locality (city).
+Let’s find information about the post office in the locality.
 
 **Searching post offices by city ID**
 
