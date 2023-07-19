@@ -1,3 +1,8 @@
+---
+cover: .gitbook/assets/deokupovani-900х450.png
+coverY: 0
+---
+
 # Welcome!
 
 ## Welcome to Address Search API
