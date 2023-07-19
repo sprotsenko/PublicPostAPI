@@ -85,9 +85,22 @@ paths:
         - name: city_id
           in: query
           description: The ID of the city
-          required: true
+          required: false
           schema:
             type: string
+        - name: city_koatuu
+          in: query
+          description: The koatuu code of the city
+          required: false
+          schema:
+            type: string
+        - name: city_katottg
+          in: query
+          description: The katottg code of the city
+          required: false
+          schema:
+            type: string            
+            
       responses:
         '200':
           description: Successful response
@@ -97,6 +110,64 @@ paths:
                 $ref: '#/components/schemas/PostOfficeResponse'
       security:
         - bearerAuth: []
+
+
+
+  /get_street_by_region_id_and_district_id_and_city_id_and_street_ua:
+    get:
+      summary: Get street by region ID, district ID, city ID, and street name
+      parameters:
+        - name: city_id
+          in: query
+          description: The ID of the city
+          required: true
+          schema:
+            type: string
+        - name: street_ua
+          in: query
+          description: The name of the street in Ukrainian
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreetResponse'
+      security:
+        - bearerAuth: []
+
+  /get_addr_house_by_street_id:
+    get:
+      summary: Get address house by street ID and house number
+      parameters:
+        - name: street_id
+          in: query
+          description: The ID of the street
+          required: true
+          schema:
+            type: string
+        - name: housenumber
+          in: query
+          description: The house number
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddressHouseResponse'
+      security:
+        - bearerAuth: []
+
+
 
 components:
   securitySchemes:
@@ -123,8 +194,128 @@ components:
           type: string
           example: "3200000000"
         REGION_RU:
-          type: null
+          type: string
           example: null
+
+    CityByRegionAndDistrictResponse:
+      type: object
+      properties:
+        REGION_ID:
+          type: string
+          example: "273"
+        DISTRICT_ID:
+          type: string
+          example: "361"
+        REGION_UA:
+          type: string
+          example: "Львівська"
+        CITY_ID:
+          type: string
+          example: "15116"
+        DISTRICT_UA:
+          type: string
+          example: "Червоноградський"
+        CITY_UA:
+          type: string
+          example: "Лісове"
+        OWNOF:
+          type: string
+          example: "Великомостівська"
+
+    AddressHouseResponse:
+      type: object
+      properties:
+        STREET_ID:
+          type: string
+          example: "201017"
+        POSTCODE:
+          type: string
+          example: "07405"
+        HOUSENUMBER_UA:
+          type: string
+          example: "251"
+
+    StreetResponse:
+      type: object
+      properties:
+        REGION_ID:
+          type: string
+          example: "270"
+        OLDSTREET_EN:
+          type: string
+          example: null
+        DISTRICT_ID:
+          type: string
+          example: "339"
+        CITY_RU:
+          type: string
+          example: "0"
+        STREET_UA:
+          type: string
+          example: "Київська"
+        SHORTSTREETTYPE_UA:
+          type: string
+          example: "вул."
+        DISTRICT_EN:
+          type: string
+          example: "BROVARSKYI"
+        REGION_EN:
+          type: string
+          example: "Kyivska"
+        STREET_ID:
+          type: string
+          example: "201017"
+        STREETTYPE_UA:
+          type: string
+          example: "вулиця"
+        SHORTSTREETTYPE_RU:
+          type: string
+          example: null
+        STREETTYPE_RU:
+          type: string
+          example: null
+        OLDSTREET_UA:
+          type: string
+          example: null
+        NEW_DISTRICT_UA:
+          type: string
+          example: null
+        CITY_EN:
+          type: string
+          example: "Brovary"
+        STREET_EN:
+          type: string
+          example: "KYIVSKA"
+        OLDSTREET_RU:
+          type: string
+          example: null
+        REGION_RU:
+          type: string
+          example: null
+        REGION_UA:
+          type: string
+          example: "Київська"
+        SHORTSTREETTYPE_EN:
+          type: string
+          example: null
+        STREETTYPE_EN:
+          type: string
+          example: "street"
+        CITY_ID:
+          type: string
+          example: "10952"
+        DISTRICT_UA:
+          type: string
+          example: "Броварський"
+        STREET_RU:
+          type: string
+          example: null
+        CITY_UA:
+          type: string
+          example: "Бровари"
+        DISTRICT_RU:
+          type: string
+          example: "0"
 
     DistrictResponse:
       type: object
@@ -142,7 +333,7 @@ components:
           type: string
           example: "339"
         REGION_RU:
-          type: null
+          type: string
           example: null
         DISTRICT_KATOTTG:
           type: string
@@ -166,7 +357,7 @@ components:
           type: string
           example: "0"
         NEW_DISTRICT_UA:
-          type: null
+          type: string
           example: null
 
     CityResponse:
@@ -197,31 +388,31 @@ components:
           type: string
           example: "Kyivska"
         OLDCITY_RU:
-          type: null
+          type: string
           example: null
         SHORTCITYTYPE_EN:
-          type: null
+          type: string
           example: null
         CITYTYPE_UA:
           type: string
           example: "місто"
         OLDCITY_UA:
-          type: null
+          type: string
           example: null
         NEW_DISTRICT_UA:
-          type: null
+          type: string
           example: null
         CITY_EN:
           type: string
           example: "Brovary"
         CITYTYPE_RU:
-          type: null
+          type: string
           example: null
         CITY_KOATUU:
           type: string
           example: "3210600000"
         REGION_RU:
-          type: null
+          type: string
           example: null
         NAME_UA:
           type: string
@@ -230,10 +421,10 @@ components:
           type: string
           example: "Київська"
         OLDCITY_EN:
-          type: null
+          type: string
           example: null
         SHORTCITYTYPE_RU:
-          type: null
+          type: string
           example: null
         CITY_ID:
           type: string
@@ -294,7 +485,7 @@ components:
           type: string
           example: "2738"
         POSTOFFICE_UA_DETAILS:
-          type: null
+          type: string
           example: null
         LOCK_UA:
           type: string
@@ -333,7 +524,7 @@ components:
           type: string
           example: "48"
         CITY_ID:
-          type: string
+          type: string     
           example: "10952"
         HOUSENUMBER:
           type: string
@@ -344,3 +535,4 @@ components:
         CITY_UA:
           type: string
           example: "Бровари"
+ 

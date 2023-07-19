@@ -2,7 +2,8 @@
 
 * [Welcome!](README.md)
 * [Quick Start](quick-start.md)
-* [PostOffice Serch](postoffice-serch.md)
+* [Postoffice delivery](postoffice-delivery.md)
+* [Courier delivery](courier-delivery.md)
 
 ## Reference
 
