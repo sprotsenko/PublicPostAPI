@@ -16,6 +16,6 @@ Feeling like an eager beaver? Jump into the quick start docs and get making your
 
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
 
-{% content-ref url="reference/api-reference/" %}
-[api-reference](reference/api-reference/)
+{% content-ref url="reference/api-reference.md" %}
+[api-reference.md](reference/api-reference.md)
 {% endcontent-ref %}
