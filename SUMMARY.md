@@ -7,4 +7,4 @@
 
 ## Reference
 
-* [API Reference](reference/api-reference.md)
+* [API Reference](reference/api-reference/README.md)
