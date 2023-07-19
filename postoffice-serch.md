@@ -72,22 +72,30 @@ Let’s find information about the post office in the locality (city).
 
 **Searching post offices by city ID**
 
-In response for each of the post offices, we will receive the field POSTCODE– zip code, which must be specified during the address creation.
+In response to each of the post offices, we will receive the field POSTCODE– zip code, which must be specified during the address creation.
+
+{% hint style="info" %}
+The post offices can also be found by the KOATUU and KATOTTG codes.
+{% endhint %}
 
 {% swagger src=".gitbook/assets/openapiSearchAddress.yaml" path="/get_postoffices_by_postcode_cityid_cityvpzid" method="get" expanded="true" %}
 [openapiSearchAddress.yaml](.gitbook/assets/openapiSearchAddress.yaml)
 {% endswagger %}
 
-**Searching post offices by locality KOATUU code**
-
-In response for each of the post offices, we will receive the field POSTCODE – zip code, which must be specified during the address creation.
+In response to each of the post offices, we will receive the field POSTCODE – zip code, which must be specified during the address creation.
 
 Thus, the name of the city gives an opportunity to choose the nearest post office for shipment delivery.
 
-**Note.** In the case of delivery with a mobile post office, the postcode search is made according to the procedure identical to the one used for the stationary post office.
+{% hint style="info" %}
+In the case of delivery with a mobile post office, the postcode search is made according to the procedure identical to the one used for the stationary post office.
+{% endhint %}
 
-\*\*Please note that the list of post offices may include post offices that are temporarily closed or closed-type post offices (operating within a closed institution, such as the Ministry of Foreign Affairs).\*\*Temporarily closed post offices can be filtered using the LOCK\_CODE field. All active records (open post offices) have LOCK\_CODE = 0. Closed-type post offices do not provide delivery to an address (..2D), but they can perform warehouse delivery (..2W) if the recipient is an employee of that closed institution or an employee of Ukrposhta at that post office. Closed-type post offices can be filtered using the IS\_SECURITY field, where IS\_SECURITY = 1 for closed-type post offices and IS\_SECURITY = 0 for regular post offices. Searching for post offices using the KATOTTG code is done similarly to the KOATUU code, and the city\_katottg parameter should be specified.
+{% hint style="info" %}
+Please note that the list of post offices may include post offices that are temporarily closed or closed-type post offices (operating within a closed institution, such as the Ministry of Foreign Affairs).
+{% endhint %}
 
-**Searching post offices by locality KATOTTG code**
+Temporarily closed post offices can be filtered using the LOCK\_CODE field. All active records (open post offices) have LOCK\_CODE = 0. Closed-type post offices do not provide delivery to an address (..2D), but they can perform warehouse delivery (..2W) if the recipient is an employee of that closed institution or an employee of Ukrposhta at that post office.&#x20;
+
+Closed-type post offices can be filtered using the IS\_SECURITY field, where IS\_SECURITY = 1 for closed-type post offices and IS\_SECURITY = 0 for regular post offices. Searching for post offices using the KATOTTG code is done similarly to the KOATUU code, and the city\_katottg parameter should be specified.
 
 The next section contains an example of searching a zip code for courier delivery.
